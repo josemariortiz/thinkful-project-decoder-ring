@@ -10,11 +10,15 @@ const caesarModule = (function () {
     // your solution code here
 
     // When shift is false
+    if (shift === 0 || shift > 25 || shift < -25 || shift === undefined) {
+      return false;
+    }
     if (encode === false) {
+      // When encode is false
       shift = shift * -1;
     }
     // Creating an array of letters from the input & and changing them to lowercase
-    const inputArray = input.lowerCase().split("");
+    const inputArray = input.toLowerCase().split("");
 
     // Creating an array of the alphabets for comparison
     const alphabets = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -25,8 +29,18 @@ const caesarModule = (function () {
     // Looping through the array with forEach
     inputArray.forEach((char) => {
       if (shift < 0) {
+        shift = 26 + (shift % 26);
+      }
+
+      // Check for space and symbol
+      if (char === " " || char === ".") {
+        result += char;
+      } else {
+        result +=
+          alphabets[(alphabets.length + alphabets.indexOf(char) + shift) % 26];
       }
     });
+    return result;
   }
 
   return {
