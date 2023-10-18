@@ -8,6 +8,25 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     // your solution code here
+
+    // When shift is false
+    if (encode === false) {
+      shift = shift * -1;
+    }
+    // Creating an array of letters from the input & and changing them to lowercase
+    const inputArray = input.lowerCase().split("");
+
+    // Creating an array of the alphabets for comparison
+    const alphabets = "abcdefghijklmnopqrstuvwxyz".split("");
+
+    // Initialzie an empty variable for the result
+    let result = "";
+
+    // Looping through the array with forEach
+    inputArray.forEach((char) => {
+      if (shift < 0) {
+      }
+    });
   }
 
   return {
